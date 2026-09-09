@@ -1,10 +1,5 @@
-venv/
-__pycache__/
+test-bed/venv/
+**/__pycache__/
+**/.cache/
 fake_home/
 CHANGES.md
-test-bed/venv/
-**/__pycache__/
-**/.cache/
-test-bed/venv/
-**/__pycache__/
-**/.cache/

@@ -1,12 +1,9 @@
-# Full `pip freeze` of the venv used to run every PoC in this test-bed
-# (test-bed/venv/, gitignored - not committed itself).
-#
+# Full `pip freeze` of the venv used to run every PoC in this test-bed for exact macine state and reproducibility. This is not a curated list of dependencies for any single PoC, but rather a snapshot of the entire environment used to run all PoCs in this test-bed.
+
 # This is an exact snapshot of one machine's state at one point in time, not
 # a curated dependency list - installing all of it is not required and not
 # expected. A tester can just as reasonably install only what a given
-# repo's own README asks for and test that repo in isolation; this file
-# exists so the full environment can be reproduced exactly if wanted, not
-# as the only supported way to run any single PoC.
+# repo's needs to run.
 #
 # Setup:
 #   python3 -m venv test-bed/venv

@@ -1,10 +1,9 @@
 # xitro-rce-trust-remote-code PoC
 
-Confirms `models/xitro-rce-trust-remote-code`'s `modeling_custom.py`/`tokenization_custom.py` exfiltrate env/host data on `trust_remote_code=True` loading - see [custom-model-type-explained.md](custom-model-type-explained.md) for how the `"model_type": "bert"` shortcut in `config.json` gets `AutoConfig` to resolve at all.
+Confirms `models/xitro-rce-trust-remote-code`'s `modeling_custom.py`/`tokenization_custom.py` exfiltrate env/host data on `trust_remote_code=True`
 
 > **Note:** the real exfil target (`https://xitro-env-probe.hf.space/exfil`, redirected in the repo's own files) was swapped for a local `127.0.0.1:8080` receiver for safety - nothing leaves the machine during this test.
 
-> **Known limitation:** `AutoModel.from_pretrained(repo, trust_remote_code=True)` still fails on this repo - `XitroRCEModel`/`XitroRCETokenizer` don't inherit from `PreTrainedModel`/`PreTrainedTokenizerBase`, so the load crashes one step before the malicious `__init__` runs. `execute-poc.py` uses a direct import instead.
 
 ## Run
 
@@ -23,7 +22,7 @@ Runs receiver → monitor → trigger → saves evidence automatically.
 # Terminal 2 - Monitor (tcpdump capture, needs sudo)
 ./monitor.sh xitro-rce-trust-remote-code
 
-# Terminal 3 - Execute PoC (direct import, not AutoModel - see Known limitation above)
+# Terminal 3 - Execute PoC
 python3 execute-poc.py
 ```
 

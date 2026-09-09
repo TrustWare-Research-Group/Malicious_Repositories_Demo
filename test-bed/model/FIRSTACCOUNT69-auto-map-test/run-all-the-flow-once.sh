@@ -4,7 +4,7 @@
 sudo fuser -k 8080/tcp 2>/dev/null || true
 sleep 1
 
-./receiver.sh > /tmp/receiver_output.txt 2>&1 &
+./receiver.sh FIRSTACCOUNT69-auto-map-test > /tmp/receiver_output.txt 2>&1 &
 sleep 1
 
 ./monitor.sh FIRSTACCOUNT69-auto-map-test &

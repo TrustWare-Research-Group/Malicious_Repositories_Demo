@@ -1,9 +1,7 @@
 # Overview
 
-Security testbed for malicious/vulnerable Hugging Face models and datasets -
-downloaded artifacts, minimal local safety edits, and working PoC harnesses
-that trigger and capture evidence of each vulnerability without depending on
-(or reaching out to) the real internet.
+This is the testbed where we verified malicious and vulnerable Hugging Face models and datasets. We demonstrated that Python scripts can be effectively used to cause system‑level malicious impact, and all it takes is for an attacker to similarly manipulate these files on a target machine. Given these existing possibilities, script scanning on Hugging Face should be increasingly vetted to elevate trust, in other words, python script files should be reviewed more thoroughly across the platform.
+
 
 ## `datasets/`
 
@@ -38,3 +36,18 @@ with `tcpdump`, and save evidence (`capture.pcap`, run output, receiver
 output) to that folder's `evidence/`. `requirements.txt` covers the shared
 venv (`test-bed/venv/`, gitignored) all of these run against. Each folder's
 `README.md` explains how to run it and what to expect.
+
+## Test environment
+
+All PoCs were verified on this machine. Behaviour can differ elsewhere - the
+platform-specific notes (Windows-only vectors, GUI/keyboard requirements, no
+PowerShell, etc.) in individual repo READMEs are relative to this setup.
+
+| | |
+|---|---|
+| OS | Debian GNU/Linux 12 (bookworm) |
+| Kernel | Linux 6.1.0-52-cloud-amd64 |
+| Architecture | x86_64 |
+| Machine | headless cloud VM (no GUI/display), 4 vCPU, 31 GiB RAM |
+| GPU | none - CPU-only |
+| Python | 3.11.2 (project venv at `test-bed/venv/`) |

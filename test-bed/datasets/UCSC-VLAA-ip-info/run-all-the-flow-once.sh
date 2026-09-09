@@ -11,7 +11,6 @@ sleep 1
 sleep 2
 
 python3 execute-poc.py 2>&1 | tee /tmp/run_output.txt
-# python3 execute-poc-minimal.py 2>&1 | tee /tmp/run_output_minimal.txt
 
 sleep 2
 sudo pkill -INT -f "tcpdump -i lo"
@@ -24,7 +23,6 @@ sudo fuser -k 8080/tcp 2>/dev/null || true
 OUT=$(cat evidence/.current_run)
 sudo chown "$(id -u)":"$(id -g)" "$OUT/capture.pcap"
 cp /tmp/run_output.txt "$OUT/run_output.txt"
-cp /tmp/run_output_minimal.txt "$OUT/run_output_minimal.txt"
 cp /tmp/receiver_output.txt "$OUT/receiver_output.txt"
 
 echo "=== evidence dir: $OUT ==="

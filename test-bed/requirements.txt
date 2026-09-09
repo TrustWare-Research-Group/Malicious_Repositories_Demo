@@ -1,15 +1,24 @@
-# Full `pip freeze` of the venv used to run every PoC in this test-bed for exact macine state and reproducibility. This is not a curated list of dependencies for any single PoC, but rather a snapshot of the entire environment used to run all PoCs in this test-bed.
-
-# This is an exact snapshot of one machine's state at one point in time, not
-# a curated dependency list - installing all of it is not required and not
-# expected. A tester can just as reasonably install only what a given
-# repo's needs to run.
+# Exact `pip freeze` of the venv used to verify every PoC in this test-bed - a
+# full snapshot of all installed packages, pinned.
 #
-# Setup:
+# IMPORTANT - install with --no-deps:
 #   python3 -m venv test-bed/venv
 #   source test-bed/venv/bin/activate
-#   pip install -r test-bed/requirements.txt
+#   pip install --no-deps -r test-bed/requirements.txt
 #
+# Why --no-deps: this environment is internally inconsistent - langgraph 1.2.11
+# declares langchain-core>=1.4.7 while langchain 0.3.30 / langchain-openai
+# 0.3.35 require langchain-core<1.0.0 (0.3.86 is what's actually installed).
+# The packages coexist because they were installed at different times, not
+# because they form a valid resolution, so a normal `pip install -r` fails with
+# a ResolutionImpossible error. --no-deps lays down these exact versions as-is.
+#
+# After install, two non-pip steps:
+#   playwright install chromium && sudo playwright install-deps chromium
+#   (pynput keylogger PoCs also need an X display - run headless ones under Xvfb)
+#
+# torch/torchaudio/torchvision are CPU (+cpu) builds from PyTorch's own index:
+--extra-index-url https://download.pytorch.org/whl/cpu
 
 absl-py==2.5.0
 annotated-doc==0.0.5

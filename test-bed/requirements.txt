@@ -1,22 +1,19 @@
 # Full `pip freeze` of the venv used to run every PoC in this test-bed
 # (test-bed/venv/, gitignored - not committed itself).
 #
+# This is an exact snapshot of one machine's state at one point in time, not
+# a curated dependency list - installing all of it is not required and not
+# expected. A tester can just as reasonably install only what a given
+# repo's own README asks for and test that repo in isolation; this file
+# exists so the full environment can be reproduced exactly if wanted, not
+# as the only supported way to run any single PoC.
+#
 # Setup:
 #   python3 -m venv test-bed/venv
 #   source test-bed/venv/bin/activate
 #   pip install -r test-bed/requirements.txt
 #
-# playwright needs two extra steps pip alone can't do (used by
-# datasets/zhmzm-AgentTrap's case_0007 - headless Chromium):
-#   playwright install chromium
-#   sudo playwright install-deps chromium   # OS shared libs (libnspr4, libnss3, ...) -
-#                                            # without this, chromium fails with
-#                                            # "error while loading shared libraries: libnspr4.so"
-#
-# Note: transformers==5.14.1 here is newer than models/a350h-GoodbyeWorld's
-# config.json (pinned to 4.53.2) - that's the known, documented cause of the
-# AttributeError in that repo's README, not a bug to "fix" by upgrading/downgrading.
-#
+
 absl-py==2.5.0
 annotated-doc==0.0.5
 annotated-types==0.8.0

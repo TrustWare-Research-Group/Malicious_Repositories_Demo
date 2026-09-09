@@ -1,0 +1,2 @@
+127.0.0.1 - - [09/Sep/2026 04:50:07] "GET /helloworld.py HTTP/1.1" 200 -
+./receiver.sh: line 5: 20904 Killed                  python3 -m http.server 8080 --bind 127.0.0.1

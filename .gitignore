@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+fake_home/
+CHANGES.md
+test-bed/venv/
+**/__pycache__/
+**/.cache/

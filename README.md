@@ -28,14 +28,13 @@ changed.
 
 ## `test-bed/`
 
-The actual PoC harnesses - one folder per repo above (under `test-bed/model/`
-or `test-bed/datasets/`), each with `execute-poc-*.py` scripts that load and
-trigger the real flagged file, plus `receiver.sh` / `monitor.sh` /
-`run-all-the-flow-once.sh` to stand up a local receiver, capture the traffic
-with `tcpdump`, and save evidence (`capture.pcap`, run output, receiver
-output) to that folder's `evidence/`. `requirements.txt` covers the shared
-venv (`test-bed/venv/`, gitignored) all of these run against. Each folder's
-`README.md` explains how to run it and what to expect.
+- **Structure:** One folder per repository inside `test-bed/model/` or `test-bed/datasets/`.
+- **Execution:** `execute-poc-*.py` scripts load the flagged file.
+- **Automation:** Scripts like `receiver.sh`, `monitor.sh`, and `run-all-the-flow-once.sh` handle local setup, traffic capture (`tcpdump`), and evidence collection.
+- **Evidence:** Saved to each folder's `evidence/` directory (`capture.pcap`, run logs, receiver output).
+- **Environment:** Shared virtual environment (`test-bed/venv/`) managed by a common `requirements.txt`.
+- **Documentation:** Each subfolder contains a `README.md` with instructions and expected outcomes.
+
 
 ## Test environment
 
